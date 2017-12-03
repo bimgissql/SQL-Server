@@ -1,0 +1,49 @@
+
+1. Check firewall state:
+=====================================================
+
+firewall-cmd --state
+
+
+2. Update yum packages
+=====================================================
+
+yum update -y
+
+
+3. Download the Microsoft SQL Server repository configuration file
+=====================================================
+
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
+
+
+4. Install Microsoft SQL Server
+=====================================================
+
+sudo yum install -y mssql-server
+
+
+5. Configure Microsoft SQL Server
+=====================================================
+
+sudo /opt/mssql/bin/mssql-conf setup
+
+
+6. Verify that the service is running
+=====================================================
+
+systemctl status mssql-server
+
+
+7. Configure firewall to allow remote connections
+=====================================================
+
+sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent
+sudo firewall-cmd --reload
+
+
+
+
+
+
+
